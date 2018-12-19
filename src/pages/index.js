@@ -1,42 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
-
-import pic from '../img/harry_1.jpg';
-import hoverPic from '../img/harry_dcfc.jpg';
-
-const harry = {
-	style: {
-		'-webkit-filter': 'grayscale(100%)',
-    filter: 'grayscale(100%)',
-	}
-};
+import logo from '../img/harry_sig.png'
+import images from '../img/harries';
 
 export default class IndexPage extends React.Component {
 	constructor() {
-		super()
-		this.state = { pic };
-	}
+    super()
+    
+		this.state = {
+      harryIndex: 0
+    };
+  }
+
+  componentDidMount() {
+    setInterval(this.togglePic, 2000);
+  }
+  
+  getImage = () => {
+    return images[this.state.harryIndex];
+  }
+
+  renderHiddenImages = () => {
+    return images.map((img, index) => (
+      <img key={`harry-${index}`} src={img} className="is-hidden"/>
+    ))
+  }
 
 	togglePic = () => {
-		this.setState({ pic: this.state.pic === pic ? hoverPic : pic });
+    const { harryIndex } = this.state;
+
+    const newIndex = (harryIndex + 1) % images.length;
+		this.setState({ harryIndex: newIndex });
 	}
 
   render() {
-    const { data } = this.props
-
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <img
-								onMouseOut={this.togglePic} onMouseOver={this.togglePic}
-								src={this.state.pic} alt="harry" style={harry.style/* ;) */}
-							/>
-            </div>
-          </div>
-        </section>
+      <section className="hero is-fullheight is-harry is-white" style={{
+        backgroundImage: `url(${this.getImage()})`
+      }}>
+        <h1 className="title"><img className="harry-style__logo" src={logo} alt="Harry" /></h1>
+      </section>
+      {this.renderHiddenImages()}
       </Layout>
     )
   }
