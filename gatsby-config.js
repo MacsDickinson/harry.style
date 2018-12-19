@@ -1,12 +1,3 @@
-const headers = {
-  options: {
-    headers: {
-      "/*": [
-        "X-Frame-Options: SAMEORIGIN",
-      ]
-    },
-  }
-}
 module.exports = {
   siteMetadata: {
     title: 'Harry.',
@@ -68,12 +59,16 @@ module.exports = {
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins
-    'gatsby-plugin-netlify-headers',
     {
+      resolve: 'gatsby-plugin-netlify',
       options: {
-        headers: {}
+        headers: {
+          '/*': [
+            "X-Frame-Options: SAMEORIGIN",
+          ]
+        },
+        mergeSecurityHeaders: true,
       }
-    },
-    'gatsby-plugin-netlify', // make sure to keep it last in the array
+    }, // make sure to keep it last in the array
   ],
 }
