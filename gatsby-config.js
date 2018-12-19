@@ -67,7 +67,7 @@ module.exports = {
             "X-Frame-Options: SAMEORIGIN",
           ]
         },
-        mergeSecurityHeaders: true,
+        mergeSecurityHeaders: false,
       }
     }, // make sure to keep it last in the array
   ],
