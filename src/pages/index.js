@@ -41,6 +41,7 @@ export default class IndexPage extends React.Component {
         backgroundImage: `url(${this.getImage()})`
       }}>
         <h1 className="title"><img className="harry-style__logo" src={logo} alt="Harry" /></h1>
+        <audio autoPlay src="./sound/harry.mp3" />
       </section>
       {this.renderHiddenImages()}
       </Layout>
