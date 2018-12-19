@@ -23,7 +23,7 @@ export default class IndexPage extends React.Component {
 
   renderHiddenImages = () => {
     return images.map((img, index) => (
-      <img key={`harry-${index}`} src={img} className="is-hidden"/>
+      <img key={`harry-${index}`} src={img} alt="moar harry" className="is-hidden"/>
     ))
   }
 
@@ -41,7 +41,10 @@ export default class IndexPage extends React.Component {
         backgroundImage: `url(${this.getImage()})`
       }}>
         <h1 className="title"><img className="harry-style__logo" src={logo} alt="Harry" /></h1>
-        <audio autoPlay src="./sound/harry.mp3" />
+        <audio id="player" autoPlay>
+          <source src="./sound/harry.mp3" type="audio/mp3"/>
+        </audio>
+        <iframe title="silence" src="./sound/silence.mp3" allow="autoplay" id="audio" style={{display: "none"}}></iframe>
       </section>
       {this.renderHiddenImages()}
       </Layout>
