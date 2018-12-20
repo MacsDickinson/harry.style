@@ -8,6 +8,7 @@ $kaldi-red-invert: #fff
 $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
+$break-small: 768px;
 
 .content .taglist
   list-style: none
@@ -57,7 +58,9 @@ img
   background-color: white
   -webkit-filter: grayscale(100%)
   filter: gray
-  background-position: center center;
+  background-position: center top
+  @media screen and (max-width: $break-small) 
+      background-position: center center
   .title
     margin-top: 5%
     background: rgba(255, 255, 255, 0.5)

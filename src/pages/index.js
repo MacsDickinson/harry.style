@@ -41,7 +41,7 @@ export default class IndexPage extends React.Component {
         backgroundImage: `url(${this.getImage()})`
       }}>
         <h1 className="title"><img className="harry-style__logo" src={logo} alt="Harry" /></h1>
-        <audio id="player" autoPlay>
+        <audio id="player" autoPlay controls style={{height: "100px"}}>
           <source src="./sound/harry.mp3" type="audio/mp3"/>
         </audio>
         <iframe title="silence" src="./sound/silence.mp3" allow="autoplay" id="audio" style={{display: "none"}}></iframe>
